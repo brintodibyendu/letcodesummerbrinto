@@ -1,0 +1,17 @@
+class Solution:
+    def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        wrklist=[]
+        anslist=[]
+        othlist=[]
+        if len(nums1)<len(nums2):
+            wrklist=nums1
+            othlist=nums2
+        else:
+            wrklist=nums1
+            othlist=nums2
+        
+        for elm in wrklist:
+            if elm in othlist:
+                anslist.append(elm)
+                othlist.remove(elm)
+        return anslist
