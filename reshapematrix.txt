@@ -1,0 +1,11 @@
+class Solution:
+    def matrixReshape(self, mat: List[List[int]], r: int, c: int) -> List[List[int]]:
+        ans1=[]
+        for i in range(r):
+            ans1.append([0]*c)
+        n=len(mat[0])
+        if n*len(mat)==r*c:
+            for i in range(r*c):
+                ans1[int(i/c)][int(i%c)]=mat[int(i/n)][int(i%n)]
+            return ans1
+        return mat
