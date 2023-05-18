@@ -1,0 +1,12 @@
+class Solution:
+    def dfs(self,i:int,j:int,image: List[List[int]],value:int,newcolor:int):
+        if i<0 or i>=len(image) or j<0 or j>=len(image[0]) or image[i][j]!=value or image[i][j]==newcolor:
+            return
+        image[i][j]=newcolor
+        self.dfs(i+1,j,image,value,newcolor)
+        self.dfs(i,j+1,image,value,newcolor)
+        self.dfs(i-1,j,image,value,newcolor)
+        self.dfs(i,j-1,image,value,newcolor)
+    def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
+        self.dfs(sr,sc,image,image[sr][sc],color)
+        return image
