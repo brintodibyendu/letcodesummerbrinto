@@ -1,0 +1,14 @@
+class Solution:
+    def isIsomorphic(self, s: str, t: str) -> bool:
+        hshmp1=[]
+        hshmp2=[]
+        if len(s)!=len(t):
+            return false
+        for let in s:
+            hshmp1.append(s.index(let))
+        for let in t:
+            hshmp2.append(t.index(let))
+        if hshmp1==hshmp2:
+            return True
+            
+        return False
