@@ -1,0 +1,11 @@
+class Solution:
+    def minimumKeypresses(self, s: str) -> int:
+        count_letter=Counter(s)
+        ans=0
+        counter=0
+        for i, freq in enumerate(sorted(count_letter.values(),reverse=True)):
+            if i%9==0:
+                counter=counter+1
+            ans=ans+(counter*freq)
+        
+        return ans
