@@ -1,0 +1,16 @@
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        stk=[]
+        if head==None:
+            return;
+        while(head!=None):
+            stk.append(head.val)
+            head=head.next
+           
+        head=ListNode(stk.pop(), None)
+        ans_node=head
+        while len(stk)!=0:
+            hdnode=ListNode(stk.pop(), None)
+            head.next=hdnode
+            head=hdnode
+        return ans_node
