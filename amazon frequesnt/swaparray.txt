@@ -1,0 +1,16 @@
+class Solution:
+    def minimumSwaps(self, nums: List[int]) -> int:
+        min_el=min(nums)
+        max_el=max(nums)
+        min_ind=-1
+        max_ind=len(nums)
+        for i in range(len(nums)):
+            if nums[i]==min_el:
+                if min_ind==-1:
+                    min_ind=i
+            if nums[i]==max_el:
+                max_ind=i
+        
+        if min_ind>max_ind:
+            return len(nums)-1-max_ind + min_ind-1
+        return len(nums)-1-max_ind+min_ind
