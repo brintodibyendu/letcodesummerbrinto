@@ -1,0 +1,28 @@
+class Solution:
+    def simplifyPath(self, path: str) -> str:
+        
+        res_str=""
+        res_stck=[]
+        i=0
+        while i<len(path):
+            if path[i]=='/':
+                i=i+1
+                continue
+            temp_str=""
+            while i<len(path) and path[i]!='/':
+                temp_str=temp_str+path[i]
+                i=i+1
+            if temp_str==".":
+                i=i+1
+                continue
+            elif temp_str=="..":
+                if len(res_stck)!=0:
+                    res_stck.pop(-1)
+            else:
+                res_stck.append(temp_str)
+            i=i+1
+        while len(res_stck)!=0:
+            res_str='/'+res_stck.pop(-1)+res_str
+        if len(res_str)==0:
+            return '/'
+        return res_str
