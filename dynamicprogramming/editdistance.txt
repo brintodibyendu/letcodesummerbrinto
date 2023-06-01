@@ -1,0 +1,15 @@
+class Solution:
+    def minDistance(self, word1: str, word2: str) -> int:
+        work_arr=[[0 for j in range(len(word2)+1)] for i in range(len(word1)+1)]
+        print(len(work_arr))
+        for i in range(len(work_arr[0])):
+            work_arr[0][i]=i
+        for i in range(len(work_arr)):
+            work_arr[i][0]=i
+        for i in range(1,len(work_arr)):
+            for j in range(1,len(work_arr[0])):
+                if word1[i-1]==word2[j-1]:
+                    work_arr[i][j]=work_arr[i-1][j-1]
+                else:
+                    work_arr[i][j]=min(work_arr[i-1][j],work_arr[i][j-1],work_arr[i-1][j-1])+1
+        return work_arr[len(work_arr)-1][len(work_arr[0])-1]
