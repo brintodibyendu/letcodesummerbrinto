@@ -1,0 +1,11 @@
+class Solution:
+    def evalRPN(self, tokens: List[str]) -> int:
+        symbols=['+','-','*','/']
+        stack=[]
+        for num in tokens:
+            if num in symbols:
+                x,y=int(stack.pop()),int(stack.pop())
+                stack.append(x+y if num=='+' else y-x if num=='-' else x*y if num=='*' else int(y/x))
+            else:
+                stack.append(num)
+        return int(stack[-1])
